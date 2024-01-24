@@ -109,14 +109,14 @@ catalog:
     #   rules:
     #     - allow: [User, Group]
 
-# kubernetes:
-#   serviceLocatorMethod:
-#     type: 'multiTenant'
-#   clusterLocatorMethods:
-#     - type: 'config'
-#       clusters:
-#         - name: ${K8S_CLUSTER_NAME}
-#           url: ${K8S_CLUSTER_URL}
-#           authProvider: 'serviceAccount'
-#           skipTLSVerify: true
-#           serviceAccountToken: ${K8S_CLUSTER_TOKEN}
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - name: api-ocp-system-sumerge-local:6443
+          url:  https://api.ocp.sumerge.local:6443
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          serviceAccountToken: default
