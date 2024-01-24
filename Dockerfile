@@ -21,14 +21,12 @@ USER 1001
 # Install dependencies
 ENV CYPRESS_INSTALL_BINARY=0
 COPY --from=packages /opt/app-root/src/ ./
-RUN --mount=type=cache,mode=0777,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
-    yarn install --frozen-lockfile --network-timeout 600000
+RUN yarn install --frozen-lockfile --network-timeout 600000
 
 COPY --chown=1001:0 . .
 
 # Compile & build the packages
-RUN --mount=type=cache,mode=0777,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
-    yarn tsc && \
+RUN yarn tsc && \
     yarn --cwd packages/backend build
 RUN mkdir packages/backend/dist/skeleton packages/backend/dist/bundle \
     && tar xzf packages/backend/dist/skeleton.tar.gz -C packages/backend/dist/skeleton \
