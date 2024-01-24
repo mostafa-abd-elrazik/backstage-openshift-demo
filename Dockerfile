@@ -27,7 +27,7 @@ RUN --mount=type=cache,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
 COPY --chown=1001:0 . .
 
 # Compile & build the packages
-RUN --mount=type=cache,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
+RUN --mount=type=cache,mode=0777,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
     yarn tsc && \
     yarn --cwd packages/backend build
 RUN mkdir packages/backend/dist/skeleton packages/backend/dist/bundle \
