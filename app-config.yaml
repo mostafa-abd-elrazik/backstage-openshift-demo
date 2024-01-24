@@ -32,10 +32,10 @@ backend:
   database:
       client: pg
       connection:
-        host: ${POSTGRESQL_SERVICE_HOST}
-        port: ${POSTGRESQL_SERVICE_PORT}
-        user: ${DATABASE_USER}
-        password: ${DATABASE_PASSWORD}
+        host: postgres.backstage.svc.cluster.local
+        port: 5432
+        user: postgres
+        password: hunter2
   cache:
     store: memory
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
