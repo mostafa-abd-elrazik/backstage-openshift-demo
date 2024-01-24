@@ -21,7 +21,7 @@ USER 1001
 # Install dependencies
 ENV CYPRESS_INSTALL_BINARY=0
 COPY --from=packages /opt/app-root/src/ ./
-RUN --mount=type=cache,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
+RUN --mount=type=cache,mode=0777,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
     yarn install --frozen-lockfile --network-timeout 600000
 
 COPY --chown=1001:0 . .
@@ -50,7 +50,7 @@ ENV NODE_ENV production
 COPY --from=build /opt/app-root/src/yarn.lock \
                   /opt/app-root/src/package.json \
                   /opt/app-root/src/packages/backend/dist/skeleton/ ./
-RUN --mount=type=cache,from=build,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
+RUN --mount=type=cache,mode=0777,from=build,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
     yarn install --frozen-lockfile --production --network-timeout 600000
 
 # Copy the built packages from the build stage
