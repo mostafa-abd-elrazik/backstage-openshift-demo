@@ -48,8 +48,7 @@ ENV NODE_ENV production
 COPY --from=build /opt/app-root/src/yarn.lock \
                   /opt/app-root/src/package.json \
                   /opt/app-root/src/packages/backend/dist/skeleton/ ./
-RUN --mount=type=cache,mode=0777,from=build,target=/opt/app-root/src/.cache/yarn,uid=1001,gid=0 \
-    yarn install --frozen-lockfile --production --network-timeout 600000
+RUN yarn install --frozen-lockfile --production --network-timeout 600000
 
 # Copy the built packages from the build stage
 COPY --from=build /opt/app-root/src/packages/backend/dist/bundle/ ./
