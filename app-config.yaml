@@ -1,7 +1,7 @@
 app:
   title: Scaffolded Backstage App
   # baseUrl: https://${HOST}
-  baseUrl: https://localhost
+  baseUrl: http://localhost:7007
 
 organization:
   name: My Company
@@ -14,7 +14,7 @@ backend:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
   # baseUrl: https://${HOST}
-  baseUrl: https://localhost
+  baseUrl: http://localhost:7007
   listen:
     port: 7007
     # Uncomment the following host directive to bind to specific interfaces
